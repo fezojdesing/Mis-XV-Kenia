@@ -537,3 +537,48 @@ body { isolation: isolate; }
 @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
   .back-home { background: rgba(245,247,248,.97); }
 }
+
+/* Corrección definitiva de posición: controles anclados a los extremos del viewport. */
+.back-home,
+.music-toggle {
+  position: fixed !important;
+  top: auto !important;
+  bottom: calc(16px + env(safe-area-inset-bottom, 0px)) !important;
+  z-index: 1001 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex: 0 0 auto !important;
+  width: max-content !important;
+  max-width: calc(50vw - 24px) !important;
+  min-width: 0 !important;
+  box-sizing: border-box !important;
+  white-space: nowrap !important;
+  margin: 0 !important;
+  transform-origin: center !important;
+}
+.back-home {
+  left: calc(16px + env(safe-area-inset-left, 0px)) !important;
+  right: auto !important;
+}
+.music-toggle {
+  right: calc(16px + env(safe-area-inset-right, 0px)) !important;
+  left: auto !important;
+}
+.back-home,
+.music-toggle {
+  padding: 9px 13px !important;
+  gap: 6px !important;
+}
+@media (max-width: 480px) {
+  .back-home,
+  .music-toggle {
+    bottom: calc(12px + env(safe-area-inset-bottom, 0px)) !important;
+    max-width: calc(50vw - 22px) !important;
+    min-height: 40px !important;
+    padding: 8px 10px !important;
+    gap: 5px !important;
+    font-size: 12px !important;
+  }
+  .music-toggle__label { white-space: nowrap !important; }
+}
