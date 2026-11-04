@@ -169,8 +169,8 @@
     });
   });
 
-  // Reproductor YouTube. iOS/Safari no permite iniciar audio con sonido
-  // sin una interacción directa; por eso esperamos el toque del invitado.
+  // Reproductor YouTube. Intentamos autoplay donde el navegador lo permita.
+  // En iPhone/Safari, el invitado podrá iniciar el audio con el botón.
   const musicButton = document.querySelector(".music-toggle");
   let player = null;
   let playerReady = false;
@@ -189,7 +189,6 @@
     musicButton.classList.toggle("is-playing", playing);
   };
 
-  // Indicamos que el reproductor se está preparando mientras carga la API.
   updateMusicButton(false);
 
   window.onYouTubeIframeAPIReady = () => {
@@ -200,7 +199,7 @@
       height: "200",
       videoId: "31CNgtIEN80",
       playerVars: {
-        autoplay: 0,
+        autoplay: 1,
         controls: 0,
         disablekb: 1,
         fs: 0,
@@ -215,6 +214,9 @@
           event.target.setVolume(85);
           playerReady = true;
           updateMusicButton(false);
+          // En equipos/navegadores que lo permiten, la canción comienza sola.
+          // Si iOS lo bloquea, el botón queda disponible para iniciar con un toque.
+          try { event.target.playVideo(); } catch (_) { updateMusicButton(false); }
         },
         onStateChange: (event) => {
           if (event.data === YT.PlayerState.PLAYING) updateMusicButton(true);
@@ -231,8 +233,6 @@
 
   if (musicButton) {
     musicButton.addEventListener("click", () => {
-      // No abrimos YouTube en otra pestaña si la API aún está cargando.
-      // El invitado puede tocar de nuevo cuando el botón indique que está listo.
       if (!playerReady || !player) {
         updateMusicButton(false);
         return;
