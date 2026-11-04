@@ -487,7 +487,7 @@ body { isolation: isolate; }
   -webkit-backdrop-filter: blur(24px) saturate(190%);
   backdrop-filter: blur(24px) saturate(190%);
   text-shadow: 0 1px 0 rgba(255,255,255,.72);
-  position: relative;
+  /* Mantiene el posicionamiento fijo individual de cada control. */
   isolation: isolate;
 }
 
