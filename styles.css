@@ -445,3 +445,28 @@ body { isolation: isolate; }
   outline: 2px solid var(--navy);
   outline-offset: 4px;
 }
+
+
+/* Área clicable transparente sobre el logotipo FEZOJ del arte original. */
+.fezoj-logo-link {
+  position: absolute;
+  z-index: 8;
+  left: 50%;
+  top: 94.5%;
+  width: 34%;
+  height: 4%;
+  transform: translate(-50%, -50%);
+  display: block;
+  border-radius: 6px;
+  background: transparent;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.fezoj-logo-link:hover {
+  background: rgba(255,255,255,.08);
+  box-shadow: 0 0 0 1px rgba(198,164,93,.45), 0 0 14px rgba(198,164,93,.16);
+}
+.fezoj-logo-link:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
