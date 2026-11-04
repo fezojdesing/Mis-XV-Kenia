@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="es">
 <head>
@@ -5,72 +6,225 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#e9e8e4">
   <meta name="description" content="Información del evento de XV años de Kenia.">
+
   <title>Detalles del evento · Kenia</title>
+
+  <!-- Tipografía -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+
+  <!-- Estilos -->
+  <link rel="stylesheet" href="./styles.css">
 </head>
+
 <body class="details-page">
+
   <main class="invitation invitation--details" aria-label="Información de los XV años de Kenia">
+
     <section class="page details" aria-label="Información original del evento">
-      <img src="assets/datos.jpg" alt="Diseño original con información de padres y padrinos, ceremonia religiosa, recepción, itinerario y regalos">
+
+      <!-- Imagen principal con los datos del evento -->
+      <img
+        src="./images/datos.jpg"
+        alt="Diseño original con información de padres y padrinos, ceremonia religiosa, recepción, itinerario y regalos"
+      >
+
+      <!-- Cuenta regresiva -->
       <div class="countdown" id="countdown" role="timer" aria-label="Cuenta regresiva para el evento">
-        <div class="countdown__unit"><span class="countdown__number" data-unit="days">000</span><span class="countdown__label">DÍAS</span></div>
-        <div class="countdown__unit"><span class="countdown__number" data-unit="hours">00</span><span class="countdown__label">HRS</span></div>
-        <div class="countdown__unit"><span class="countdown__number" data-unit="minutes">00</span><span class="countdown__label">MIN</span></div>
-        <div class="countdown__unit"><span class="countdown__number" data-unit="seconds">00</span><span class="countdown__label">SEG</span></div>
+
+        <div class="countdown__unit">
+          <span class="countdown__number" data-unit="days">000</span>
+          <span class="countdown__label">DÍAS</span>
+        </div>
+
+        <div class="countdown__unit">
+          <span class="countdown__number" data-unit="hours">00</span>
+          <span class="countdown__label">HRS</span>
+        </div>
+
+        <div class="countdown__unit">
+          <span class="countdown__number" data-unit="minutes">00</span>
+          <span class="countdown__label">MIN</span>
+        </div>
+
+        <div class="countdown__unit">
+          <span class="countdown__number" data-unit="seconds">00</span>
+          <span class="countdown__label">SEG</span>
+        </div>
+
       </div>
-      <a class="map-link map-church" href="https://www.google.com/maps/search/?api=1&amp;query=Santuario+del+Sr.+de+la+Santa+Veracruz%2C+Camino+a+la+Cruz+de+Misi%C3%B3n%2C+Barrio+La+Veracruz%2C+Sultepec+de+Pedro+Ascencio+de+Alquisiras%2C+Estado+de+M%C3%A9xico" target="_blank" rel="noopener noreferrer" aria-label="Ver mapa de la ceremonia religiosa: Santuario del Señor de la Santa Veracruz"></a>
-      <a class="map-link map-reception" href="https://www.google.com/maps/search/?api=1&amp;query=Auditorio+Alfredo+del+Mazo+Velez%2C+Francisco+I.+Madero+S%2FN%2C+Calvario+Sultepec%2C+Sultepec+de+Pedro+Ascencio+de+Alquisiras%2C+Estado+de+M%C3%A9xico" target="_blank" rel="noopener noreferrer" aria-label="Ver mapa de la recepción: Auditorio Alfredo del Mazo Vélez"></a>
+
+      <!-- Enlace al mapa de la ceremonia religiosa -->
+      <a
+        class="map-link map-church"
+        href="https://www.google.com/maps/search/?api=1&amp;query=Santuario+del+Sr.+de+la+Santa+Veracruz%2C+Camino+a+la+Cruz+de+Misi%C3%B3n%2C+Barrio+La+Veracruz%2C+Sultepec+de+Pedro+Ascencio+de+Alquisiras%2C+Estado+de+M%C3%A9xico"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Ver mapa de la ceremonia religiosa: Santuario del Señor de la Santa Veracruz"
+      ></a>
+
+      <!-- Enlace al mapa de la recepción -->
+      <a
+        class="map-link map-reception"
+        href="https://www.google.com/maps/search/?api=1&amp;query=Auditorio+Alfredo+del+Mazo+Velez%2C+Francisco+I.+Madero+S%2FN%2C+Calvario+Sultepec%2C+Sultepec+de+Pedro+Ascencio+de+Alquisiras%2C+Estado+de+M%C3%A9xico"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Ver mapa de la recepción: Auditorio Alfredo del Mazo Vélez"
+      ></a>
+
+      <!-- Cronograma de la celebración -->
       <section class="timeline-replacement" aria-label="Cronograma de la celebración">
+
         <div class="timeline-grid">
-          <article class="timeline-event"><span class="timeline-event__time">14:30 hrs</span><span class="timeline-event__name">Celebración Religiosa</span></article>
-          <article class="timeline-event"><span class="timeline-event__time">16:00 hrs</span><span class="timeline-event__name">Recepción</span></article>
-          <article class="timeline-event"><span class="timeline-event__time">16:30 hrs</span><span class="timeline-event__name">Sagrados Alimentos</span></article>
-          <article class="timeline-event"><span class="timeline-event__time">17:30 hrs</span><span class="timeline-event__name">Fotos</span></article>
-          <article class="timeline-event"><span class="timeline-event__time">18:30 hrs</span><span class="timeline-event__name">Inauguración de la mesa de dulces</span></article>
-          <article class="timeline-event"><span class="timeline-event__time">19:00 hrs</span><span class="timeline-event__name">Pastel</span></article>
-          <article class="timeline-event"><span class="timeline-event__time">19:30 hrs</span><span class="timeline-event__name">Vals</span></article>
-          <article class="timeline-event"><span class="timeline-event__time">21:00 hrs</span><span class="timeline-event__name">¡A bailar!</span></article>
+
+          <article class="timeline-event">
+            <span class="timeline-event__time">14:30 hrs</span>
+            <span class="timeline-event__name">Celebración Religiosa</span>
+          </article>
+
+          <article class="timeline-event">
+            <span class="timeline-event__time">16:00 hrs</span>
+            <span class="timeline-event__name">Recepción</span>
+          </article>
+
+          <article class="timeline-event">
+            <span class="timeline-event__time">16:30 hrs</span>
+            <span class="timeline-event__name">Sagrados Alimentos</span>
+          </article>
+
+          <article class="timeline-event">
+            <span class="timeline-event__time">17:30 hrs</span>
+            <span class="timeline-event__name">Fotos</span>
+          </article>
+
+          <article class="timeline-event">
+            <span class="timeline-event__time">18:30 hrs</span>
+            <span class="timeline-event__name">Inauguración de la mesa de dulces</span>
+          </article>
+
+          <article class="timeline-event">
+            <span class="timeline-event__time">19:00 hrs</span>
+            <span class="timeline-event__name">Pastel</span>
+          </article>
+
+          <article class="timeline-event">
+            <span class="timeline-event__time">19:30 hrs</span>
+            <span class="timeline-event__name">Vals</span>
+          </article>
+
+          <article class="timeline-event">
+            <span class="timeline-event__time">21:00 hrs</span>
+            <span class="timeline-event__name">¡A bailar!</span>
+          </article>
+
         </div>
       </section>
+
+      <!-- Opciones de regalo -->
       <div class="gift-interaction" aria-label="Opciones de regalo">
-        <button class="gift-choice" type="button" data-gift="envelope" aria-expanded="false">
-          <span class="gift-choice__art" aria-hidden="true"><span class="gift-envelope"></span></span>
+
+        <button
+          class="gift-choice"
+          type="button"
+          data-gift="envelope"
+          aria-expanded="false"
+        >
+          <span class="gift-choice__art" aria-hidden="true">
+            <span class="gift-envelope"></span>
+          </span>
+
           <span class="gift-choice__title">Lluvia de sobres</span>
           <span class="gift-choice__hint">Un detalle en efectivo</span>
         </button>
-        <button class="gift-choice" type="button" data-gift="present" aria-expanded="false">
-          <span class="gift-choice__art" aria-hidden="true"><span class="gift-box"><i class="gift-box__bow"></i></span></span>
+
+        <button
+          class="gift-choice"
+          type="button"
+          data-gift="present"
+          aria-expanded="false"
+        >
+          <span class="gift-choice__art" aria-hidden="true">
+            <span class="gift-box">
+              <i class="gift-box__bow"></i>
+            </span>
+          </span>
+
           <span class="gift-choice__title">Regalo tradicional</span>
           <span class="gift-choice__hint">Un obsequio con cariño</span>
         </button>
+
       </div>
-      <div class="gift-message" id="giftMessage" role="status" aria-live="polite"></div>
+
+      <!-- Mensaje de opciones de regalo -->
+      <div
+        class="gift-message"
+        id="giftMessage"
+        role="status"
+        aria-live="polite"
+      ></div>
+
     </section>
   </main>
 
-
+  <!-- Pie de página FEZOJ -->
   <footer class="fezoj-footer" aria-label="Créditos y servicios FEZOJ">
-    <p class="fezoj-footer__brand">Hecha por <strong>FEZOJ</strong></p>
-    <p class="fezoj-footer__copy">¿Te gustaría una invitación así? Conoce nuestros servicios y solicita tu cotización.</p>
-    <a class="fezoj-footer__link" href="mailto:fezojdesing@gmail.com?subject=Informaci%C3%B3n%20y%20cotizaci%C3%B3n%20FEZOJ">Conoce nuestros servicios</a>
+
+    <p class="fezoj-footer__brand">
+      Hecha por <strong>FEZOJ</strong>
+    </p>
+
+    <p class="fezoj-footer__copy">
+      ¿Te gustaría una invitación así? Conoce nuestros servicios y solicita tu cotización.
+    </p>
+
+    <a
+      class="fezoj-footer__link"
+      href="https://fezojdesing.github.io/fezoj_studio/"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      Conoce nuestros servicios
+    </a>
+
   </footer>
-  <a class="back-home" href="index.html" aria-label="Regresar a la portada"><span aria-hidden="true">←</span> Portada</a>
+
+  <!-- Regresar a la portada -->
+  <a
+    class="back-home"
+    href="./index.html"
+    aria-label="Regresar a la portada"
+  >
+    <span aria-hidden="true">←</span> Portada
+  </a>
+
+  <!-- Reproductor de música -->
   <div class="music-player" aria-hidden="true">
     <div id="youtube-player" title="Canción de XV años de Kenia"></div>
   </div>
-  <button class="music-toggle" type="button" aria-pressed="false" aria-label="Reproducir canción">
+
+  <!-- Control de música -->
+  <button
+    class="music-toggle"
+    type="button"
+    aria-pressed="false"
+    aria-label="Reproducir canción"
+  >
     <span class="music-toggle__icon" aria-hidden="true">♫</span>
     <span class="music-toggle__label">Reproducir música</span>
   </button>
+
+  <!-- Efectos decorativos -->
   <div class="ambient-sparkles" aria-hidden="true"></div>
+
   <div class="sparkle-transition" aria-hidden="true">
     <span class="sparkle-transition__glow"></span>
     <div class="sparkle-transition__particles"></div>
   </div>
-  <script src="script.js"></script>
+
+  <!-- Scripts -->
+  <script src="./script.js"></script>
   <script src="https://www.youtube.com/iframe_api" async></script>
+
 </body>
 </html>
