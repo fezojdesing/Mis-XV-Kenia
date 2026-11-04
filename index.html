@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#e9e8e4">
+  <meta name="description" content="Invitación digital de XV años de Kenia.">
+  <title>Mis XV años · Kenia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="cover-page">
+  <main class="invitation invitation--cover" aria-label="Invitación digital de XV años">
+    <section class="page cover" aria-label="Portada de la invitación">
+      <img src="assets/index.jpg" alt="Portada original de la invitación de XV años de Kenia">
+      <a class="open-invitation" href="datos.html" aria-label="Abrir invitación y ver los detalles"></a>
+    </section>
+  </main>
+  <div class="music-player" aria-hidden="true">
+    <div id="youtube-player" title="Canción de XV años de Kenia"></div>
+  </div>
+  <button class="music-toggle" type="button" aria-pressed="false" aria-label="Reproducir canción">
+    <span class="music-toggle__icon" aria-hidden="true">♫</span>
+    <span class="music-toggle__label">Reproducir música</span>
+  </button>
+  <div class="ambient-sparkles" aria-hidden="true"></div>
+  <div class="sparkle-transition" aria-hidden="true">
+    <span class="sparkle-transition__glow"></span>
+    <div class="sparkle-transition__particles"></div>
+  </div>
+  <script src="script.js"></script>
+  <script src="https://www.youtube.com/iframe_api" async></script>
+</body>
+</html>
