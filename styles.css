@@ -582,3 +582,25 @@ body { isolation: isolate; }
   }
   .music-toggle__label { white-space: nowrap !important; }
 }
+
+
+/* Ajuste específico de escritorio para la página de detalles.
+   Cada control queda anclado a un extremo distinto del navegador. */
+@media (min-width: 700px) {
+  body.details-page > .back-home {
+    position: fixed !important;
+    left: 18px !important;
+    right: auto !important;
+    bottom: 24px !important;
+    margin-left: 0 !important;
+    margin-right: auto !important;
+  }
+  body.details-page > .music-toggle {
+    position: fixed !important;
+    right: 18px !important;
+    left: auto !important;
+    bottom: 24px !important;
+    margin-left: auto !important;
+    margin-right: 0 !important;
+  }
+}
