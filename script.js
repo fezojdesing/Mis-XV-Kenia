@@ -153,7 +153,7 @@
     }
   }
 
-  document.querySelectorAll('a[href="datos.html"], a[href="index.html"]').forEach((link) => {
+  document.querySelectorAll('a[href$="datos.html"], a[href$="index.html"]').forEach((link) => {
     link.addEventListener("click", (event) => {
       if (event.defaultPrevented || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
       if (link.target === "_blank") return;
