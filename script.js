@@ -169,24 +169,28 @@
     });
   });
 
-  // Reproductor YouTube. El navegador puede bloquear el autoplay con sonido;
-  // el botón permanece visible para iniciar la canción con un toque.
+  // Reproductor YouTube. iOS/Safari no permite iniciar audio con sonido
+  // sin una interacción directa; por eso esperamos el toque del invitado.
   const musicButton = document.querySelector(".music-toggle");
   let player = null;
+  let playerReady = false;
   let isPlaying = false;
-  let playRequested = false;
 
   const updateMusicButton = (playing) => {
     isPlaying = playing;
     if (!musicButton) return;
     musicButton.setAttribute("aria-pressed", String(playing));
-    musicButton.setAttribute("aria-label", playing ? "Pausar canción" : "Reproducir canción");
+    musicButton.setAttribute("aria-busy", String(!playerReady));
+    musicButton.setAttribute("aria-label", playing ? "Pausar canción" : (playerReady ? "Reproducir canción" : "La música se está preparando"));
     const label = musicButton.querySelector(".music-toggle__label");
     const icon = musicButton.querySelector(".music-toggle__icon");
-    if (label) label.textContent = playing ? "Pausar música" : "Reproducir música";
+    if (label) label.textContent = playing ? "Pausar música" : (playerReady ? "Toca para escuchar" : "Preparando música…");
     if (icon) icon.textContent = playing ? "Ⅱ" : "♫";
     musicButton.classList.toggle("is-playing", playing);
   };
+
+  // Indicamos que el reproductor se está preparando mientras carga la API.
+  updateMusicButton(false);
 
   window.onYouTubeIframeAPIReady = () => {
     const mount = document.getElementById("youtube-player");
@@ -196,7 +200,7 @@
       height: "200",
       videoId: "31CNgtIEN80",
       playerVars: {
-        autoplay: 1,
+        autoplay: 0,
         controls: 0,
         disablekb: 1,
         fs: 0,
@@ -209,28 +213,28 @@
         onReady: (event) => {
           event.target.getIframe().setAttribute("allow", "autoplay; encrypted-media; picture-in-picture");
           event.target.setVolume(85);
-          // Primer intento automático. Si el navegador lo bloquea, el botón lo inicia.
-          try { event.target.playVideo(); } catch (_) { updateMusicButton(false); }
-          if (playRequested) {
-            event.target.playVideo();
-            playRequested = false;
-          }
+          playerReady = true;
+          updateMusicButton(false);
         },
         onStateChange: (event) => {
           if (event.data === YT.PlayerState.PLAYING) updateMusicButton(true);
           if (event.data === YT.PlayerState.PAUSED || event.data === YT.PlayerState.ENDED) updateMusicButton(false);
         },
         onAutoplayBlocked: () => updateMusicButton(false),
-        onError: () => updateMusicButton(false)
+        onError: () => {
+          playerReady = false;
+          updateMusicButton(false);
+        }
       }
     });
   };
 
   if (musicButton) {
     musicButton.addEventListener("click", () => {
-      if (!player || typeof player.playVideo !== "function") {
-        playRequested = true;
-        window.open("https://www.youtube.com/watch?v=31CNgtIEN80", "_blank", "noopener,noreferrer");
+      // No abrimos YouTube en otra pestaña si la API aún está cargando.
+      // El invitado puede tocar de nuevo cuando el botón indique que está listo.
+      if (!playerReady || !player) {
+        updateMusicButton(false);
         return;
       }
       if (isPlaying) player.pauseVideo();
