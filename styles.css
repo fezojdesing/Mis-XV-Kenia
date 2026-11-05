@@ -604,3 +604,27 @@ body { isolation: isolate; }
     margin-right: 0 !important;
   }
 }
+
+
+/* Compatibilidad Android: separa las tarjetas del texto impreso en el arte.
+   Se activa solo en Android para conservar intacta la composición en iPhone. */
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+body.is-android .gift-interaction {
+  top: 83.2%;
+}
+body.is-android .gift-choice {
+  background: rgba(249, 248, 245, .97);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+}
+body.is-android .gift-message {
+  top: 87%;
+}
+@media (max-width: 380px) {
+  body.is-android .gift-interaction {
+    top: 82.2%;
+  }
+}
