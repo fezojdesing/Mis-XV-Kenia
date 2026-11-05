@@ -1,6 +1,9 @@
 (() => {
   "use strict";
 
+  // Detecta Android para aplicar un ajuste localizado al apartado de regalos.
+  if (/Android/i.test(navigator.userAgent)) document.body.classList.add("is-android");
+
   // Cuenta regresiva: 19 de diciembre de 2026, 14:30 h, Sultepec (UTC-06:00).
   const eventDate = new Date("2026-12-19T14:30:00-06:00").getTime();
   const fields = {
