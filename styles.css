@@ -612,8 +612,8 @@ html {
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
 }
-/* En Android, las tarjetas recuperan altura y la descripción se muestra
-   en el espacio libre SOBRE ellas, sin tapar la indicación impresa inferior. */
+/* Ajuste Android: conserva las tarjetas en su zona y muestra el texto
+   dentro de la propia tarjeta seleccionada, sin capas flotantes. */
 body.is-android .gift-interaction {
   top: 80.2%;
 }
@@ -622,14 +622,42 @@ body.is-android .gift-choice {
   -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
 }
-body.is-android .gift-message {
-  top: calc(80.2% - 126px);
+
+
+/* Descripción integrada en cada tarjeta: no flota sobre el arte original. */
+.gift-choice {
+  height: auto;
+  min-height: 100%;
+  align-self: start;
+  transition: min-height .28s ease, padding .28s ease, transform .28s ease,
+              box-shadow .28s ease, background-color .28s ease, border-color .28s ease;
+}
+.gift-choice__description {
+  display: none;
+  width: 100%;
+  margin-top: 3px;
+  padding-top: 6px;
+  border-top: 1px solid rgba(198,164,93,.25);
+  color: var(--navy);
+  font: 500 12px/1.18 var(--serif);
+  text-align: center;
+}
+.gift-choice.is-selected .gift-choice__description,
+.gift-choice.is-preview .gift-choice__description {
+  display: block;
+}
+.gift-choice.is-selected,
+.gift-choice.is-preview {
+  min-height: 142px;
+  padding-bottom: 9px;
 }
 @media (max-width: 380px) {
-  body.is-android .gift-interaction {
-    top: 79.8%;
+  .gift-choice.is-selected,
+  .gift-choice.is-preview {
+    min-height: 136px;
   }
-  body.is-android .gift-message {
-    top: calc(79.8% - 126px);
+  .gift-choice__description {
+    font-size: 11px;
+    line-height: 1.16;
   }
 }
