@@ -615,7 +615,12 @@ html {
 /* Ajuste Android: conserva las tarjetas en su zona y muestra el texto
    dentro de la propia tarjeta seleccionada, sin capas flotantes. */
 body.is-android .gift-interaction {
-  top: 80.2%;
+  top: 81.4%;
+}
+@media (max-width: 380px) {
+  body.is-android .gift-interaction {
+    top: 80.8%;
+  }
 }
 body.is-android .gift-choice {
   background: rgba(249, 248, 245, .97);
