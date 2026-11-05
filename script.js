@@ -55,27 +55,12 @@
   }
 
 
-  // Opciones de regalo: la descripción aparece al pasar el cursor,
-  // al enfocar con teclado o al tocar la opción en dispositivos móviles.
+  // Opciones de regalo: la descripción vive dentro de cada tarjeta.
+  // Así nunca se superpone al texto original de la invitación.
   const giftChoices = document.querySelectorAll('.gift-choice');
-  const giftMessage = document.getElementById('giftMessage');
-  const giftCopy = {
-    envelope: '<strong>Lluvia de sobres</strong>Si deseas obsequiar efectivo, el día del evento encontrarás un buzón especial para depositar tu sobre. ¡Gracias por tu cariño!',
-    present: '<strong>Regalo tradicional</strong>Si prefieres sorprender a Kenia con un obsequio, será recibido con muchísimo cariño. ¡Tu detalle hará aún más especial este día!'
-  };
   const giftInteraction = document.querySelector('.gift-interaction');
   let pinnedGift = null;
 
-  const showGiftMessage = (choice) => {
-    if (!giftMessage || !choice) return;
-    giftMessage.innerHTML = giftCopy[choice.dataset.gift] || '';
-    giftMessage.classList.add('is-visible');
-  };
-  const hideGiftMessage = () => {
-    if (!giftMessage) return;
-    giftMessage.classList.remove('is-visible');
-    giftMessage.innerHTML = '';
-  };
   const selectGift = (choice) => {
     giftChoices.forEach((item) => {
       const selected = item === choice;
@@ -97,25 +82,17 @@
   }
 
   giftChoices.forEach((choice) => {
-    choice.addEventListener('pointerenter', () => showGiftMessage(choice));
+    choice.addEventListener('pointerenter', () => {
+      if (!pinnedGift) choice.classList.add('is-preview');
+    });
     choice.addEventListener('pointerleave', () => {
-      if (pinnedGift) showGiftMessage(pinnedGift);
-      else hideGiftMessage();
+      choice.classList.remove('is-preview');
     });
-    choice.addEventListener('focus', () => showGiftMessage(choice));
-    choice.addEventListener('blur', () => {
-      window.setTimeout(() => {
-        const focused = document.activeElement && document.activeElement.closest('.gift-choice');
-        if (focused) showGiftMessage(focused);
-        else if (pinnedGift) showGiftMessage(pinnedGift);
-        else hideGiftMessage();
-      }, 0);
-    });
+    choice.addEventListener('focus', () => choice.classList.add('is-preview'));
+    choice.addEventListener('blur', () => choice.classList.remove('is-preview'));
     choice.addEventListener('click', () => {
       pinnedGift = pinnedGift === choice ? null : choice;
       selectGift(pinnedGift);
-      if (pinnedGift) showGiftMessage(pinnedGift);
-      else hideGiftMessage();
     });
   });
 
