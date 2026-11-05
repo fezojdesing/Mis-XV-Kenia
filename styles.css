@@ -612,8 +612,10 @@ html {
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
 }
+/* En Android, las tarjetas recuperan altura y la descripción se muestra
+   en el espacio libre SOBRE ellas, sin tapar la indicación impresa inferior. */
 body.is-android .gift-interaction {
-  top: 83.2%;
+  top: 80.2%;
 }
 body.is-android .gift-choice {
   background: rgba(249, 248, 245, .97);
@@ -621,10 +623,13 @@ body.is-android .gift-choice {
   backdrop-filter: blur(8px);
 }
 body.is-android .gift-message {
-  top: 87%;
+  top: calc(80.2% - 126px);
 }
 @media (max-width: 380px) {
   body.is-android .gift-interaction {
-    top: 82.2%;
+    top: 79.8%;
+  }
+  body.is-android .gift-message {
+    top: calc(79.8% - 126px);
   }
 }
